@@ -2,6 +2,8 @@ FROM docker.io/eclipse-temurin:21.0.1_12-jre
 LABEL NAME = "WebGoat: A deliberately insecure Web Application"
 LABEL maintainer = "WebGoat team"
 
+USER root
+
 RUN \
   useradd -ms /bin/bash webgoat && \
   chgrp -R 0 /home/webgoat && \
