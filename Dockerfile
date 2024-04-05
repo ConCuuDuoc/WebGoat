@@ -5,14 +5,18 @@ LABEL maintainer = "WebGoat team"
 RUN \
   useradd -ms /bin/bash webgoat && \
   chgrp -R 0 /home/webgoat && \
-  chmod -R g=u /home/webgoat
+  chmod -R g=u /home/webgoat\
+  curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz \
+  && tar xzvf docker-17.04.0-ce.tgz \
+  && mv docker/docker /usr/local/bin \
+  && rm -r docker docker-17.04.0-ce.tgz
 
 USER webgoat
 
 COPY --chown=webgoat target/webgoat-*.jar /home/webgoat/webgoat.jar
 
-EXPOSE 8080
-EXPOSE 9090
+EXPOSE 6969
+EXPOSE 7070
 
 ENV TZ=Europe/Amsterdam
 
